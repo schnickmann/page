@@ -24,10 +24,10 @@
                
                
                while (vX <= 100) {
-                    vPreis = 10 - 0.1 * vX;
-                    vErloes = vX * vP;
-                    vKosten = vFixeKosten + vVariableKosten * vX;
-                    vGewinn = vErloes - vKosten;
+                    var vPreis = 10 - 0.1 * vX;
+                    var vErloes = vX * vP;
+                    var vKosten = vFixeKosten + vVariableKosten * vX;
+                    var vGewinn = vErloes - vKosten;
                     
                     vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + fEuro(vPreis) + "</td><td>" + fEuro(vErloes) + "</td><td>" + fEuro(vKosten) + "</td><td>" + fEuro(vGewinn) + "</td></tr>";
                     vX = vX + 5;
