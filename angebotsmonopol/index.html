@@ -1,6 +1,6 @@
 <html>
      <head>
-     <title>Angebotsmonopol</title>
+     <title>Angebotsmonopolrechner</title>
      <meta http-equiv="Conten-Type" content="text/html; charset=utf-8">
 
      <script>
@@ -12,36 +12,25 @@
           
           
           function fRechner() {
-               var vZinssatz = parseFloat(document.getElementById("idZinssatz").value);
-               var vStartkapital = parseFloat(document.getElementById("idStartkapital").value);
-               var vLaufzeit = parseFloat(document.getElementById("idLaufzeit").value);
+               var vFixeKosten = parseFloat(document.getElementById("idFixeKosten").value);
+               var vVariableKosten = parseFloat(document.getElementById("idVariableKosten").value);
                
-               var vZinsfaktor = 1 + vZinssatz / 100;
-               var vEndkapital = vStartkapital * Math.pow(vZinsfaktor, vLaufzeit);
-               
-               var vZinsen;
-               var vKapitalJahresEnde;
-               
-               var vJahr = 0;
-               var vKapitalJahresAnfang = vStartkapital;
+               var vX = 0;
 
                var vAusgabe = "";
-               vAusgabe = vAusgabe + "Das Endkapital beträgt " + fEuro(vEndkapital) + ".<br><br>";
-               
                vAusgabe = vAusgabe + "<table border=1>";
-               vAusgabe = vAusgabe + "<tr><th>Jahr</th><th>Kapital am 1.1.</th><th>Zinsen am 31.12.</th><th>Kapital am 31.12.</th></tr>";
+               vAusgabe = vAusgabe + "<tr><th>x</th><th>p(x)</th><th>E(x)</th><th>K(x)</th><th>G(x)</th></tr>";
 
-               while (vJahr <= vLaufzeit) {
-                    vZinsen = vKapitalJahresAnfang * (vZinssatz / 100);
-                    vKapitalJahresEnde = vKapitalJahresAnfang + vZinsen;
+               
+               
+               while (vX <= 100) {
+                    vPreis = 10 - 0.1 * vX;
+                    vErloes = vX * vP;
+                    vKosten = vFixeKosten + vVariableKosten * vX;
+                    vGewinn = vErloes - vKosten;
                     
-                    if (vJahr == vLaufzeit) {
-                         vAusgabe = vAusgabe + "<tr><td>" + vJahr + "</td><td>" + fEuro(vKapitalJahresAnfang) + "</td><td>egal</td><td>egal</td></tr>";
-                    } else {
-                         vAusgabe = vAusgabe + "<tr><td>" + vJahr + "</td><td>" + fEuro(vKapitalJahresAnfang) + "</td><td>" + fEuro(vZinsen) + "</td><td>" + fEuro(vKapitalJahresEnde) + "</td></tr>";
-                    }
-                    vKapitalJahresAnfang = vKapitalJahresEnde;
-                    vJahr = vJahr+1;
+                    vAusgabe = vAusgabe + "<tr><td>" + vX + "</td><td>" + fEuro(vPreis) + "</td><td>" + fEuro(vErloes) + "</td><td>" + fEuro(vKosten) + "</td></tr>";
+                    vX = vX + 5;
                }
 
                vAusgabe = vAusgabe + "</table>";
@@ -52,11 +41,10 @@
 
 
     <body>
-    <h1>Zinseszinsrechner</h1>
+    <h1>Angebotsmonopolrechner</h1>
 
-    Zinssatz: <input id="idZinssatz" type="text" value="2">%<br>
-    Startkapital: <input id="idStartkapital" type="text" value="1000">€<br>
-    Laufzeit: <input id="idLaufzeit" type="text" value="5"> Jahre<br><br>
+    Fixe Kosten: <input id="idFixeKosten" type="text" value="10.00">€<br>
+    Variable Kosten: <input id="idVariableKosten" type="text" value="0.20"> Jahre<br><br>
 
     <button onClick="fRechner()">Berechnen</button><br><br>
 
