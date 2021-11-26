@@ -6,17 +6,24 @@
 			"use strict";
 
 			// Programmiere hier die Funktion calc(number)
-			function calc(celsius) {
-                celsius = parseFloat(celsius);
-                var kelvin;
-                kelvin = celsius + 273.15;
-                
+            function calc(celsius) {
                 var ausgabe;
-                ausgabe = "Die Temperatur von " + celsius + " Grad Celsius entspricht "; 
+                var kelvin;
+                
+                celsius = parseFloat(celsius)
+                kelvin = celsius + 273.15;
+
+                ausgabe = "Die Temperatur von " + celsius + "...";        
+                
+                if (celsius < 20) {
+                    ausgabe = ausgabe + "Es ist kalt.";
+                } else {
+                    ausgabe = ausgabe + "Es ist warm.";
+                }
                 
                 return ausgabe;
             }
-
+			
 			function clicked() {
 				var input = document.getElementById("idInput").value;
 				var output = calc(input);
