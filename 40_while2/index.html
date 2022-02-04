@@ -1,0 +1,53 @@
+<html>
+
+<head>
+	<title>Graf Zahl 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script>
+		"use strict";
+
+		// Programmiere hier die Funktion calc(number)
+		function calc(number) {
+            
+            console.log("Jetzt wird gezählt!");
+
+            var i = 1;
+			
+			console.log(i);
+			i = i + 1;
+			
+			console.log(i);
+			i = i + 1;
+
+			console.log(i);
+			i = i + 1;
+
+			console.log(i);
+			i = i + 1;
+
+			console.log(i);
+			i = i + 1;
+			
+            var ausgabe;
+            ausgabe = "Schau in die Konsole! Es wird immer bis 5 gezählt. Egal welche Zahl eingegeben wird";
+
+            return ausgabe;
+		}
+
+		function clicked() {
+			var input = document.getElementById("idInput").value;
+			var output = calc(input);
+			document.getElementById("idOutput").innerHTML = output;
+		}
+
+	</script>
+</head>
+
+<body>
+	<h1>Graf Zahl 2</h1>
+	Zähle bis: <input id="idInput" type="text" value="5"><br /><br />
+	<button onClick="clicked();">Berechne etwas!</button><br /><br />
+	<div id="idOutput">Hier kommt beim Klicken auf den Button eine Ausgabe.</div>
+</body>
+
+</html>
